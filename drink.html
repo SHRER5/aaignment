@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drinks Menu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Drinks Menu</h1>
+    </header>
+
+    <div class="menu-container">
+        <div class="menu-item">
+            <img src="drink1.jpg" alt="Vanilla Coke">
+            <div class="menu-item-description">
+                <h2>Vanilla Coke</h2>
+                <p>Vanilla flavored coke.</p>
+                <p>Price: $3.99</p>
+            </div>
+            <button onclick="addToCart('Vanilla coke', 3.99)">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+            <img src="drink2.jpg" alt="Fanta">
+            <div class="menu-item-description">
+                <h2>Fanta</h2>
+                <p>Fanta Raspberry flavored</p>
+                <p>Price: $2.49</p>
+            </div>
+            <button onclick="addToCart('Fanta', 2.49)">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+            <img src="drink3.jpg" alt="L&P">
+            <div class="menu-item-description">
+                <h2>L&P</h2>
+                <p>L&P ginger beer.</p>
+                <p>Price: $4.99</p>
+            </div>
+            <button onclick="addToCart('L&P', 4.99)">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+            <img src="drink4.jpg" alt="Peach Iced tea">
+            <div class="menu-item-description">
+                <h2>Peach Iced tea</h2>
+                <p>Peach flavored iced tea</p>
+                <p>Price: $9.29</p>
+            </div>
+            <button onclick="addToCart('Peach Iced tea', 9.29)">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+            <img src="drink5.jpg" alt="Thai milk tea">
+            <div class="menu-item-description">
+                <h2>Thai milk tea</h2>
+                <p>Milk flavored Thailand cold tea.</p>
+                <p>Price: $6.79</p>
+            </div>
+            <button onclick="addToCart('Thai milk tea', 6.79)">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+            <img src="drink6.jpg" alt="Mango smoothie">
+            <div class="menu-item-description">
+                <h2>Mango smoothie</h2>
+                <p>Mango Flavored smoothie with sliced mango toppings.</p>
+                <p>Price: $10.99</p>
+            </div>
+            <button onclick="addToCart('Mango smoothie', 10.99)">Add to Cart</button>
+        </div>
+    </div>
+    <div id="cart">
+        <img src="cart.jpg" alt="Cart">
+        <ul id="cart-items">
+        </ul>
+        <p>Total: $<span id="cart-total">0.00</span></p>
+    </div>
+    <script>
+        let cartItems = [];
+        let cartTotal = 0;
+
+        function addToCart(itemName, price) {
+            cartItems.push({ name: itemName, price: price });
+            cartTotal += price;
+
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItemsElement = document.getElementById("cart-items");
+            cartItemsElement.innerHTML = "";
+
+            cartItems.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+                cartItemsElement.appendChild(li);
+            });
+
+            const cartTotalElement = document.getElementById("cart-total");
+            cartTotalElement.textContent = cartTotal.toFixed(2);
+        }
+    </script>
+</body>
+</html>

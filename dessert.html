@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>Dessert Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:orange;
+        }
+
+        header {
+            background-color: #333;
+            color:orange;
+            text-align: center;
+            padding: 10px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            background-color: #fff;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .menu-item img {
+            max-width: 100px;
+            max-height: 100px;
+            margin-right: 10px;
+        }
+
+        .menu-item-description {
+            flex: 1;
+        }
+
+        .menu-item button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dessert Menu</h1>
+    </header>
+
+    <div class="menu-item">
+        <img src="dessert1.jpg" alt="Dessert 1">
+        <div class="menu-item-description">
+            <h2>Chocolate Cake</h2>
+            <p>Dark chocolate cake with whipped cream.</p>
+            <p>Price: $4.99</p>
+        </div>
+        <button onclick="addToCart('chocolate cake', 4.99)">Add to Cart</button>
+    </div>
+
+    <div class="menu-item">
+        <img src="dessert2.jpg" alt="Dessert 2">
+        <div class="menu-item-description">
+            <h2>Cheesecake</h2>
+            <p>New york style baked cheesecake.</p>
+            <p>Price: $6.99</p>
+        </div>
+        <button onclick="addToCart('Cheesecake', 6.99)">Add to Cart</button>
+    </div>
+
+    <div class="menu-item">
+        <img src="dessert3.jpg" alt="Dessert 3">
+        <div class="menu-item-description">
+            <h2>Tiramisu</h2>
+            <p>Coffee flavoured italian dessert.</p>
+            <p>Price: $10.49</p>
+        </div>
+        <button onclick="addToCart('Tiramisu', 10.49)">Add to cart</button> 
+    </div>
+
+    <div class="menu-item">
+        <img src="dessert4.jpg" alt="Dessert 4">
+        <div class="menu-item-description">
+            <h2>Banana split</h2>
+            <p>Banana cake served with ice-cream.</p>
+            <p>Price: $7.99</p>
+        </div>
+        <button onclick="addToCart('Almond and Date cake', 7.99)">Add to Cart</button>
+    </div>
+
+    <div id="cart">
+        <img src="cart.jpg" alt="Cart">
+        <ul id="cart-items">
+        </ul>
+        <p>Total: $<span id="cart-total">0.00</span></p>
+    </div>
+
+    <script>
+        let cartItems = [];
+        let cartTotal = 0;
+
+        function addToCart(itemName, price) {
+            cartItems.push({ name: itemName, price: price });
+            cartTotal += price;
+
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItemsElement = document.getElementById("cart-items");
+            cartItemsElement.innerHTML = "";
+
+            cartItems.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+                cartItemsElement.appendChild(li);
+            });
+
+            const cartTotalElement = document.getElementById("cart-total");
+            cartTotalElement.textContent = cartTotal.toFixed(2);
+        }
+    </script>
+</body>
+</html>
+
+  

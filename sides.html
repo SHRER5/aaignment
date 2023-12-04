@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>Sides Menu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Sides Menu</h1>
+    </header>
+
+    <div class="menu-container">
+        <div class="menu-item">
+            <img src="side1.jpg" alt="Fries">
+            <div class="menu-item-description">
+                <h2>Fries</h2>
+                <p>Hot chips with ketchup.</p>
+                <p>Price: $3.99</p>
+            </div>
+            <button onclick="addToCart('Fries', 4.99)">Add to Cart</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="side2.jpg" alt="Potato wedges">
+            <div class="menu-item-description">
+                <h2>Potato wedges</h2>
+                <p>Wedges with sweet and sour cream</p>
+                <p>Price: $7.49</p>
+            </div>
+            <button onclick="addToCart('Potato wedges',7.49)">Add to Cart</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="side3.jpg" alt="Crinkle cut fries">
+            <div class="menu-item-description">
+                <h2>Crinkle cut fries</h2>
+                <p>Lightly golden, crinkle-cut .</p>
+                <p>Price: $6.99</p>
+            </div>
+            <button onclick="addToCart('Crinkle cut fries',6.99)">Add to Cart</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="side4.jpg" alt="Garlic bread">
+            <div class="menu-item-description">
+                <h2>Garlic bread</h2>
+                <p> Pizza bread filled with cheese and garlic aioli, cut into strips..</p>
+                <p>Price: $5.99</p>
+            </div>
+            <button onclick="addToCart('Garlic bread',5.99)">Add to Cart</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="side5.jpg" alt="Chicken Wings">
+            <div class="menu-item-description">
+                <h2> Chicken Wings</h2>
+                <p> 6 pcs Korean styled chicken wings.</p>
+                <p>Price: $9.49</p>
+            </div>
+            <button onclick="addToCart('Chicken Wings',9.49)">Add to Cart</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="side6.jpg" alt="Onion rings">
+            <div class="menu-item-description">
+                <h2>Onion rings</h2>
+                <p>Sweetly and soft on the inside, with a crispy crunchy coating.</p>
+                <p>Price: $4.99</p>
+            </div>
+            <button onclick="addToCart('Onion rings',4.99)">Add to Cart</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="side7.jpg" alt="Hash bites">
+            <div class="menu-item-description">
+                <h2>Hash bites</h2>
+                <p>Crunchy bites of fluffy potato.</p>
+                <p>Price: $5.79</p>
+            </div>
+            <button onclick="addToCart('Hash bites',5.79)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div id="cart">
+        <img src="cart.jpg" alt="Cart">
+        <ul id="cart-items">
+        </ul>
+        <p>Total: $<span id="cart-total">0.00</span></p>
+    </div>
+
+    <script>
+        let cartItems = [];
+        let cartTotal = 0;
+
+        function addToCart(itemName, price) {
+            cartItems.push({ name: itemName, price: price });
+            cartTotal += price;
+
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItemsElement = document.getElementById("cart-items");
+            cartItemsElement.innerHTML = "";
+
+            cartItems.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+                cartItemsElement.appendChild(li);
+            });
+
+            const cartTotalElement = document.getElementById("cart-total");
+            cartTotalElement.textContent = cartTotal.toFixed(2);
+        }
+    </script>
+</body>
+</html>
